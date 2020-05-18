@@ -40,12 +40,12 @@ public class MaxHeap {
             int right = index * 2 + 1;
 
             //如果右孩子最大
-            if(right <= num && values[right] > values[index] && values[right] > values[left]){
+            if(right <= num && values[right] >= values[index] && values[right] >= values[left]){
                 swap(right, index);
                 index = right;
             }else{
                 //如果左孩子最大
-                if(left <= num && values[left] > values[index] && (right > num || values[left] > values[right])){
+                if(left <= num && values[left] >= values[index] && (right > num || values[left] >= values[right])){
                     swap(left, index);
                     index = left;
                 }else{
@@ -64,7 +64,7 @@ public class MaxHeap {
                 return;
             }
             int parent = index / 2;
-            if(values[index] > values[parent]){
+            if(values[index] >= values[parent]){
                 swap(index, parent);
                 index = parent;
             }else{
@@ -72,7 +72,6 @@ public class MaxHeap {
             }
         }
     }
-
 
     private void swap(int indexi, int indexj){
         int temp = values[indexi];
@@ -82,7 +81,8 @@ public class MaxHeap {
 
     public static void main(String[] args) {
         MaxHeap maxHeap = new MaxHeap(100);
-        for(int i = 1; i <= 50; i++){
+        for(int i = 1; i <= 10; i++){
+            maxHeap.push(i);
             maxHeap.push(i);
         }
 
